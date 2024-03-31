@@ -2,16 +2,6 @@ import org.junit.Test;
 import pages.BaseSearchPage;
 import pages.SuggestedSearchPage;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
-import pages.BaseSearchPage;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class TransitionToPageTest extends BaseTest {
 
     @Test
