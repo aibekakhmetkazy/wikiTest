@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,15 +24,20 @@ public class BaseSearchPage extends BasePage {
     @FindBy(xpath = "//*[@class=\"suggestions-result\"][@rel=\"0\"]")
     private WebElement findFirstSuggestion;
 
-    @FindBy(css = ".suggestions-special")
+    @FindBy(xpath = "//*[@class=\"suggestions\"]//*[@class=\"suggestions-special\"]")
     private WebElement SpecialSuggestion;
+//    WebElement elem = yourWebDriverInstance.findElement(By.xpath("//*[@class='goog-menu goog-menu-vertical uploadmenu density-tiny']/input"));
+//    String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
+//    ((JavascriptExecutor) yourWebDriverInstance).executeScript(js, elem);
 
     public BaseSearchPage() {
-        driver.get(config.baseUrl());
+        driver.get(config.baseUrl() + "/wiki/Заглавная_страница");
         PageFactory.initElements(driver, this);
     }
 
-    public BaseSearchPage inputSearch(String searchText) {
+    public BaseSearchPage inputSearch(String searchText) throws InterruptedException {
+        searchInput.click();
+        sleep(200);
         searchInput.sendKeys(searchText);
         return this;
     }
@@ -46,11 +52,13 @@ public class BaseSearchPage extends BasePage {
         sleep(2000);
         return this;
     }
+
     public String FirstSuggestionText() {
         return findFirstSuggestion.getText();
     }
-    public BaseSearchPage assertHighlightedTextNumber(int expectedHighlightedText) throws InterruptedException{
-        assertEquals(expectedHighlightedText, highlighted.size());
+
+    public BaseSearchPage clickToSpecialSuggestion() {
+        SpecialSuggestion.click();
         return this;
     }
 

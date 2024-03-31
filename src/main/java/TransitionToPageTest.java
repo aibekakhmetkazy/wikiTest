@@ -15,7 +15,7 @@ import java.util.List;
 public class TransitionToPageTest extends BaseTest {
 
     @Test
-    public void testHighlightedTextNumber() throws InterruptedException {
+    public void testTransitionToPage() throws InterruptedException {
 
         String searchText = "Вконтакте";
 
