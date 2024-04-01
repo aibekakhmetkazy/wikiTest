@@ -37,7 +37,7 @@ public class BaseSearchPage extends BasePage {
 
     public BaseSearchPage inputSearch(String searchText) throws InterruptedException {
         searchInput.click();
-        sleep(200);
+        sleep(500);
         searchInput.sendKeys(searchText);
         return this;
     }
